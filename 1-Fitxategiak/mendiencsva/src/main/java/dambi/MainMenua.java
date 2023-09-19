@@ -112,59 +112,6 @@ public class MainMenua {
     }
 
     /**This function will create new csv files ordered by its province */
-    public static void mendiakEsportatu() throws IOException{
-        
-        BufferedReader inputStream = null;
-        PrintWriter outputStreamG = null;
-        PrintWriter outputStreamA = null;
-        PrintWriter outputStreamB = null;
-        PrintWriter outputStreamN = null;
 
-        try {
-            inputStream = new BufferedReader(new FileReader(FITXATEGIA));
-            outputStreamG = new PrintWriter(new FileWriter("Gipuzkoa.csv"));
-            outputStreamA = new PrintWriter(new FileWriter("Araba.csv"));
-            outputStreamB = new PrintWriter(new FileWriter("Bizkaia.csv"));
-            outputStreamN = new PrintWriter(new FileWriter("Nafarroa.csv"));
-
-            String line;
-            while ((line = inputStream.readLine()) != null) {
-                String[] fields = line.split(";");
-                
-                switch (fields[2]) {
-                    case "Gipuzkoa":
-                        outputStreamG.println(line);
-                        break;
-                    case "Araba":
-                        outputStreamA.println(line);
-                        break;
-                    case "Bizkaia":
-                        outputStreamB.println(line);
-                        break;
-                    case "Nafarroa":
-                        outputStreamN.println(line);
-                        break;
-                }
-            }
-        } catch (FileNotFoundException e){
-            System.out.println("Fitxategia ez da aurkitu.");
-        } finally {
-            if (inputStream != null) {
-                inputStream.close();
-            }
-            if (outputStreamG != null) {
-                outputStreamG.close();
-            }
-            if (outputStreamA != null) {
-                outputStreamA.close();
-            }
-            if (outputStreamB != null) {
-                outputStreamB.close();
-            }
-            if (outputStreamN != null) {
-                outputStreamN.close();
-            }
-        }
     }
 
-}
