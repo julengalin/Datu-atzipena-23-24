@@ -19,7 +19,7 @@ public class UnMarshalExercises {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             Mendiak mendiak = (Mendiak)jaxbUnmarshaller.unmarshal(file);
 
-            // Turn the higth into feets
+            // Turn the heigth into feets
             for (int i = 0; i < mendiak.getMendiak().size(); i++) {
                 Mendia mendia = mendiak.getMendiak().get(i);
                 int altuera_oinetan =  (int) (mendia.getAltuera()*3.28);

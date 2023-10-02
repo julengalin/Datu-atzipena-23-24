@@ -11,7 +11,7 @@ public class MendiBatSortu {
     public static void main( String[] args ){
         try
         {
-            // Create a Mendia type object
+            // Mendia tipoko objetua sortu
             Mendia karakate = new Mendia("Karakate", 749, "Gipuzkoa");
 
             // init jaxb marshaler

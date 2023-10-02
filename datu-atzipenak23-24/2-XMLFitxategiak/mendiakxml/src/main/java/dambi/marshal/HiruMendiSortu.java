@@ -12,12 +12,12 @@ public class HiruMendiSortu {
     public static void main( String[] args ){
         try
         {
-            // Create a Mendia type objects
+            // Mendia tipoko objetua sortu
             Mendia karakate = new Mendia("Karakate", 749, "Gipuzkoa");
             Mendia aketekgi = new Mendia("Aketegi", 1548, "Gipuzkoa");
             Mendia albertia = new Mendia("Albertia", 868, "Araba");
 
-            //Create Mendiak type object and add the Mendia objects
+            //Mendia tipoko objetua sortu eta gehitu mendia objetuak
             Mendiak mendiak = new Mendiak();
             mendiak.add(karakate);
             mendiak.add(aketekgi);

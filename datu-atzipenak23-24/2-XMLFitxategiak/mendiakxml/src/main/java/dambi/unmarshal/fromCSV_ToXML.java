@@ -17,24 +17,24 @@ public class fromCSV_ToXML {
     
     public static void main(String[] args) throws IOException{
 
-        // Define variables
+        // Definitu bariableak
         BufferedReader inputStream = null;
         Mendiak mendiak = new Mendiak();
 
-        // Read line to line from the csv
+        // Irakurri lineaka csv fitxatega
         try {
             inputStream = new BufferedReader(new FileReader(CSV_FITXATEGIA));
 
-            // Read a line in each loop
+            // Irakurri linea bat loop bakoitzean
             String line;
             while ((line = inputStream.readLine()) != null) {
-                // Separate the different fields of the csv line
+                // Separatu kanpo ezberdinak CSVarena
                 String[] fields = line.split(";");
 
-                // Create a Mendia type object for each line
+                // endia tipoko objetua sortu linea bakoitzarentzako
                 if(fields[0].equals("MENDIA")){
                     Mendia mendia = new Mendia(fields[0], Integer.parseInt(fields[1]), fields[2]);
-                    // Add Mendia to Mendiak object
+                    // Gehitu Mendia Mendiak objetuari
                     mendiak.add(mendia);
                 }
             }
@@ -46,7 +46,7 @@ public class fromCSV_ToXML {
             }
         }
 
-        // Marshal Mendiak type object
+        // Marshal Mendiak tipoko objetua
         try
         {
             JAXBContext jaxbContext = JAXBContext.newInstance(Mendiak.class);
