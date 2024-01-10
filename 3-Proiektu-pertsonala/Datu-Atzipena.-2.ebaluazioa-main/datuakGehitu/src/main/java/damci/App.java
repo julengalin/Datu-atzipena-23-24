@@ -23,30 +23,30 @@ public class App {
             MongoCollection<Document> collection = database.getCollection("Players");
 
             Path csvFilePath = Paths.get(
-                    "C:\\Users\\galindo.julen\\Desktop\\Datu-atzipena-23-24\\3-Proiektu-pertsonala\\Datu-Atzipena.-2.ebaluazioa-main\\data\\CollegeBasketballPlayers2009-2021");
+                    "C:\\Users\\galindo.julen\\Desktop\\Datu-atzipena-23-24\\3-Proiektu-pertsonala\\Datu-Atzipena.-2.ebaluazioa-main\\data\\CollegeBasketballPlayers2009-2021.csv");
 
-            try (CSVReader csvReader = new CSVReader(new FileReader(csvFilePath.toFile()))) {
-                List<String[]> records = csvReader.readAll();
-
-                String[] columnNames = records.get(0);
-
-                for (int i = 1; i < records.size(); i++) {
-                    String[] record = records.get(i);
-                    Document document = new Document();
-                    for (int j = 0; j < columnNames.length; j++) {
-                        document.append(columnNames[j], record[j]);
+                    try (CSVReader csvReader = new CSVReader(new FileReader(csvFilePath.toFile()))) {
+                        List<String[]> records = csvReader.readAll();
+                        System.out.println("Total de registros en el archivo: " + records.size());
+                    
+                        String[] columnNames = records.get(0);
+                    
+                        for (int i = 1; i < records.size(); i++) {
+                            String[] record = records.get(i);
+                            Document document = new Document();
+                            for (int j = 0; j < columnNames.length; j++) {
+                                document.append(columnNames[j], record[j]);
+                            }
+                            System.out.println("Insertando documento en MongoDB:");
+                            System.out.println(document.toJson());
+                            collection.insertOne(document);
+                            System.out.println("Documento insertado en MongoDB.");
+                            System.out.println("---------------------------------");
+                        }
+                    
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    collection.insertOne(document);
-
-                    System.out.println("Documento insertado en MongoDB:");
-                    System.out.println(document.toJson());
-                    System.out.println("---------------------------------");
-
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
